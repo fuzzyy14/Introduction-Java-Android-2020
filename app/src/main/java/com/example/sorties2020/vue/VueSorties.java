@@ -2,6 +2,7 @@ package com.example.sorties2020.vue;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,7 +21,7 @@ public class VueSorties extends AppCompatActivity {
 
     protected ListView vueSorties2020ListeActivites;
     protected List<HashMap<String, String>> listeActivites;
-
+    protected Intent intentionNaviguerAjouterActivite;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,18 +41,22 @@ public class VueSorties extends AppCompatActivity {
 
         Button vueSorties2020AjouterActivite = (Button)findViewById(R.id.vueSorties2020AjouterActivite);
 
+        intentionNaviguerAjouterActivite = new Intent(this, VueAjouterActivite.class);
+
         vueSorties2020AjouterActivite.setOnClickListener(
 
                 new View.OnClickListener()
                 {
                     public void onClick(View arg0) {
                         // TODO : faire le code du bouton
+                        /*
                         Toast message = Toast.makeText(
                                 getApplicationContext(),
                                 "Action ajouter activité",
                                 Toast.LENGTH_SHORT);
                         message.show();
-
+                        */
+                        startActivity(intentionNaviguerAjouterActivite);
                     }
                 }
 
