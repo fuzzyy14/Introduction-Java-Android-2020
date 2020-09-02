@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.sorties2020.R;
+
 public class VueAjouterActivite extends AppCompatActivity {
 
     @Override
