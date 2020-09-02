@@ -3,8 +3,12 @@ package com.example.sorties2020;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,14 +16,14 @@ import java.util.List;
 
 public class VueSorties extends AppCompatActivity {
 
-    protected ListView vueListeActivites;
+    protected ListView vueSorties2020ListeActivites;
     protected List<HashMap<String, String>> listeActivites;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vue_sorties);
-        vueListeActivites = (ListView)findViewById(R.id.vueListeActivites);
+        vueSorties2020ListeActivites = (ListView)findViewById(R.id.vueSorties2020ListeActivites);
 
         listeActivites = preparerListeActivites();
 
@@ -30,7 +34,47 @@ public class VueSorties extends AppCompatActivity {
                 new String[]{"activite","date"},
                 new int[]{android.R.id.text1, android.R.id.text2});
 
-        vueListeActivites.setAdapter(adapteur);
+        vueSorties2020ListeActivites.setAdapter(adapteur);
+
+        Button vueSorties2020AjouterActivite = (Button)findViewById(R.id.vueSorties2020AjouterActivite);
+
+        vueSorties2020AjouterActivite.setOnClickListener(
+
+                new View.OnClickListener()
+                {
+                    public void onClick(View arg0) {
+                        // TODO : faire le code du bouton
+                        Toast message = Toast.makeText(
+                                getApplicationContext(),
+                                "Action ajouter activité",
+                                Toast.LENGTH_SHORT);
+                        message.show();
+
+                    }
+                }
+
+
+        );
+
+        vueSorties2020ListeActivites.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View vue, int positionDansAdapteur, long positionItem) {
+                        ListView vueListeActivites = (ListView)vue.getParent();
+
+                        @SuppressWarnings("unchecked")
+                        HashMap<String,String> activite =
+                                (HashMap<String,String>)
+                                        vueListeActivites.getItemAtPosition((int)positionItem);
+                        Toast message = Toast.makeText(getApplicationContext(),
+                                "Position "+positionItem + " activite " + activite.get("activite"),
+                                Toast.LENGTH_SHORT);
+                        message.show();
+                    }
+                }
+
+        );
+
     }
 
     public List<HashMap<String, String>> preparerListeActivites(){
@@ -39,18 +83,18 @@ public class VueSorties extends AppCompatActivity {
         HashMap<String, String> activite;
 
         activite = new HashMap<String, String>();
-        activite.put("activite","Scéance de cinéma avec les amis");
-        activite.put("date","12 Juillet");
+        activite.put("activite","Scéance de cinéma avec les amis "+ "film Là Haut");
+        activite.put("date","12 Juillet "+"à 15h20");
         listeActivites.add(activite);
 
         activite = new HashMap<String, String>();
-        activite.put("activite","Parc Festiland");
-        activite.put("date","24 Mars");
+        activite.put("activite","Parc Festiland "+ "avec mes amis du lycée");
+        activite.put("date","24 Mars "+ "de 13h à 19h");
         listeActivites.add(activite);
 
         activite = new HashMap<String, String>();
-        activite.put("activite","Parc aquatique H2O");
-        activite.put("date","12 Février");
+        activite.put("activite","Parc aquatique H2O "+"avec ma tante, ma cousine, ma mère, mon frère et ma soeur");
+        activite.put("date","12 Février "+"de 14h à 17h30");
         listeActivites.add(activite);
 
         return listeActivites;

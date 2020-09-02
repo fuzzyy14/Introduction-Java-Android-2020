@@ -8,12 +8,18 @@
     tools:context=".VueSorties">
 
     <ListView
-        android:id="@+id/vueListeActivites"
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="1dp"
+        android:id="@+id/vueSorties2020ListeActivites"
+        android:layout_width="415dp"
+        android:layout_height="684dp"
+        app:layout_constraintBottom_toTopOf="@+id/vueSorties2020AjouterActivite"
+        tools:layout_editor_absoluteX="-3dp" />
+
+    <Button
+        android:id="@+id/vueSorties2020AjouterActivite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ajouter une Activité"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="1dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
