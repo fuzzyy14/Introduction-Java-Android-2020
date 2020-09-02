@@ -1,4 +1,4 @@
-package com.example.sorties2020;
+package com.example.sorties2020.vue;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
+
+import com.example.sorties2020.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
