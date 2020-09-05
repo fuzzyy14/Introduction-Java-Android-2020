@@ -4,10 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vue.VueAjouterActivite">
+    tools:context=".vue.VueModifierActivite">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="275dp"
+        android:layout_height="50dp"
+        android:text="Modifier une Activité"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/vueModifierActiviteActionAnnuler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="84dp"
+        android:layout_marginRight="84dp"
+        android:layout_marginBottom="10dp"
+        android:text="Annuler"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
     <EditText
-        android:id="@+id/vueAjouterActiviteChampDate"
+        android:id="@+id/vueModifierActiviteChampDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -17,7 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
-        android:id="@+id/vueAjouterActiviteChampDescription"
+        android:id="@+id/vueModifierActiviteChampDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -27,33 +47,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="275dp"
-        android:layout_height="50dp"
-        android:text="Ajouter une activité"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/vueAjouterActiviteActionAnnuler"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="84dp"
-        android:layout_marginRight="84dp"
-        android:layout_marginBottom="10dp"
-        android:text="Annuler"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Date"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vueAjouterActiviteChampDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/vueModifierActiviteChampDescription" />
 
     <TextView
         android:id="@+id/textView2"
@@ -67,7 +66,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/vueAjouterActiviteChampActivite"
+        android:id="@+id/vueModifierActiviteChampActivite"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -82,7 +81,7 @@
         android:layout_height="wrap_content"
         android:text="Description"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vueAjouterActiviteChampActivite" />
+        app:layout_constraintTop_toBottomOf="@+id/vueModifierActiviteChampActivite" />
 
     <TextView
         android:id="@+id/textView5"
@@ -92,10 +91,10 @@
         android:layout_marginLeft="4dp"
         android:text="Heure"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vueAjouterActiviteChampDate" />
+        app:layout_constraintTop_toBottomOf="@+id/vueModifierActiviteChampDate" />
 
     <EditText
-        android:id="@+id/vueAjouterActiviteChampHeure"
+        android:id="@+id/vueModifierActiviteChampHeure"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -105,13 +104,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Button
-        android:id="@+id/vueAjouterActiviteActionAjouter"
+        android:id="@+id/vueModifierActiviteActionModifier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginLeft="84dp"
         android:layout_marginBottom="10dp"
-        android:text="Ajouter"
+        android:text="Modifier"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

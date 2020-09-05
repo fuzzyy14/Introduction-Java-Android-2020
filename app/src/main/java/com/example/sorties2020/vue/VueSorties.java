@@ -22,6 +22,8 @@ public class VueSorties extends AppCompatActivity {
     protected ListView vueSorties2020ListeActivites;
     protected List<HashMap<String, String>> listeActivites;
     protected Intent intentionNaviguerAjouterActivite;
+    protected Intent intentionNaviguerModifierActivite;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +65,8 @@ public class VueSorties extends AppCompatActivity {
 
         );
 
+        intentionNaviguerModifierActivite = new Intent(this, VueModifierActivite.class);
+
         vueSorties2020ListeActivites.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
@@ -73,10 +77,11 @@ public class VueSorties extends AppCompatActivity {
                         HashMap<String,String> activite =
                                 (HashMap<String,String>)
                                         vueListeActivites.getItemAtPosition((int)positionItem);
-                        Toast message = Toast.makeText(getApplicationContext(),
+                        /*Toast message = Toast.makeText(getApplicationContext(),
                                 "Position "+positionItem + " activite " + activite.get("activite"),
                                 Toast.LENGTH_SHORT);
-                        message.show();
+                        message.show(); */
+                        startActivity(intentionNaviguerModifierActivite);
                     }
                 }
 

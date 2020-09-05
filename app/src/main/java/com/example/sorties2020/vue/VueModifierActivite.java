@@ -5,19 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.sorties2020.R;
 
-public class VueAjouterActivite extends AppCompatActivity {
+public class VueModifierActivite extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vue_ajouter_activite);
+        setContentView(R.layout.vue_modifier_activite);
 
-        Button vueAjouterActiviteActionAnnuler= (Button)findViewById(R.id.vueAjouterActiviteActionAnnuler);
-        vueAjouterActiviteActionAnnuler.setOnClickListener(
+        Button vueModifierActiviteActionAnnuler= (Button)findViewById(R.id.vueModifierActiviteActionAnnuler);
+        vueModifierActiviteActionAnnuler.setOnClickListener(
 
                 new View.OnClickListener()
                 {
@@ -38,7 +37,6 @@ public class VueAjouterActivite extends AppCompatActivity {
         );
 
     }
-
     public void naviguerRetourSorties()
     {
         this.finish();
