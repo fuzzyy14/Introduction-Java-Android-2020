@@ -65,7 +65,7 @@ public class VueSorties extends AppCompatActivity {
                                 Toast.LENGTH_SHORT);
                         message.show();
                         */
-                        startActivity(intentionNaviguerAjouterActivite);
+                        //startActivity(intentionNaviguerAjouterActivite);
                         startActivityForResult(intentionNaviguerAjouterActivite, ACTIVITY_AJOUTER_ACTIVITE);
                     }
                 }
