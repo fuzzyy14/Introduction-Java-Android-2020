@@ -12,6 +12,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.example.sorties2020.R;
+import com.example.sorties2020.donnee.ActiviteDAO;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,8 +22,11 @@ public class VueSorties extends AppCompatActivity {
 
     protected ListView vueSorties2020ListeActivites;
     protected List<HashMap<String, String>> listeActivites;
+    protected ActiviteDAO activiteDAO;
     protected Intent intentionNaviguerAjouterActivite;
     protected Intent intentionNaviguerModifierActivite;
+
+    static final public int ACTIVITY_AJOUTER_ACTIVITE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +34,9 @@ public class VueSorties extends AppCompatActivity {
         setContentView(R.layout.vue_sorties);
         vueSorties2020ListeActivites = (ListView)findViewById(R.id.vueSorties2020ListeActivites);
 
-        listeActivites = preparerListeActivites();
+        activiteDAO = ActiviteDAO.getInstance();
+        /*
+        listeActivites = activiteDAO.listerActivites();
 
         SimpleAdapter adapteur = new SimpleAdapter(
                 this,
@@ -40,7 +46,8 @@ public class VueSorties extends AppCompatActivity {
                 new int[]{android.R.id.text1, android.R.id.text2});
 
         vueSorties2020ListeActivites.setAdapter(adapteur);
-
+        */
+        afficherListerActivites();
         Button vueSorties2020AjouterActivite = (Button)findViewById(R.id.vueSorties2020AjouterActivite);
 
         intentionNaviguerAjouterActivite = new Intent(this, VueAjouterActivite.class);
@@ -59,6 +66,7 @@ public class VueSorties extends AppCompatActivity {
                         message.show();
                         */
                         startActivity(intentionNaviguerAjouterActivite);
+                        startActivityForResult(intentionNaviguerAjouterActivite, ACTIVITY_AJOUTER_ACTIVITE);
                     }
                 }
 
@@ -88,8 +96,35 @@ public class VueSorties extends AppCompatActivity {
         );
 
     }
+    protected void onActivityResult(int activity, int resultat, Intent donnees) {
 
-    public List<HashMap<String, String>> preparerListeActivites(){
+        super.onActivityResult(activity,resultat,donnees);
+        switch (activity)
+        {
+            case ACTIVITY_AJOUTER_ACTIVITE:
+                afficherListerActivites();
+                break;
+            //case ACTIVITY_MODIFIER_ACTIVITE:
+                //break;
+
+        }
+    }
+
+
+    public void afficherListerActivites(){
+        listeActivites = activiteDAO.listerActivites();
+
+        SimpleAdapter adapteur = new SimpleAdapter(
+                this,
+                listeActivites,
+                android.R.layout.two_line_list_item,
+                new String[]{"activite","date"},
+                new int[]{android.R.id.text1, android.R.id.text2});
+
+        vueSorties2020ListeActivites.setAdapter(adapteur);
+
+    }
+    /*public List<HashMap<String, String>> preparerListeActivites(){
         List<HashMap<String, String>> listeActivites = new ArrayList<HashMap<String, String>>();
 
         HashMap<String, String> activite;
@@ -110,5 +145,5 @@ public class VueSorties extends AppCompatActivity {
         listeActivites.add(activite);
 
         return listeActivites;
-    }
+    } */
 }
