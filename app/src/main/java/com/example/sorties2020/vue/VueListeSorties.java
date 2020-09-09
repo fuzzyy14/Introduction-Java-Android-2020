@@ -28,7 +28,8 @@ public class VueListeSorties extends AppCompatActivity {
     protected Intent intentionNaviguerAjouterActivite;
     protected Intent intentionNaviguerModifierActivite;
 
-    static final public int ACTIVITY_AJOUTER_ACTIVITE = 1;
+    static final public int ACTIVITY_AJOUTER_SORTIE = 1;
+    static final public int ACTIVITY_MODIFIER_SORTIE = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +73,7 @@ public class VueListeSorties extends AppCompatActivity {
                         message.show();
                         */
                         //startActivity(intentionNaviguerAjouterActivite);
-                        startActivityForResult(intentionNaviguerAjouterActivite, ACTIVITY_AJOUTER_ACTIVITE);
+                        startActivityForResult(intentionNaviguerAjouterActivite, ACTIVITY_AJOUTER_SORTIE);
                     }
                 }
 
@@ -95,7 +96,9 @@ public class VueListeSorties extends AppCompatActivity {
                                 "Position "+positionItem + " activite " + activite.get("activite"),
                                 Toast.LENGTH_SHORT);
                         message.show(); */
-                        startActivity(intentionNaviguerModifierActivite);
+                       //startActivity(intentionNaviguerModifierActivite);
+                        intentionNaviguerModifierActivite.putExtra("id", sortie.get("id"));
+                        startActivityForResult(intentionNaviguerModifierActivite, ACTIVITY_MODIFIER_SORTIE);
                     }
                 }
 
@@ -107,11 +110,12 @@ public class VueListeSorties extends AppCompatActivity {
         super.onActivityResult(activity,resultat,donnees);
         switch (activity)
         {
-            case ACTIVITY_AJOUTER_ACTIVITE:
+            case ACTIVITY_AJOUTER_SORTIE:
                 afficherListerSorties();
                 break;
-            //case ACTIVITY_MODIFIER_ACTIVITE:
-                //break;
+            case ACTIVITY_MODIFIER_SORTIE:
+                afficherListerSorties();
+                break;
 
         }
     }

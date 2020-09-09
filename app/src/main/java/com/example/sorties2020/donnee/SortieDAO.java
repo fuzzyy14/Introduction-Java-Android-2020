@@ -118,4 +118,27 @@ public class SortieDAO {
         return null; //si on a rien trouvé, on retourne null
     }
 
+    public void modifierSortie(Sortie sortie){
+        //TODO : A FAIRE :)
+        SQLiteDatabase baseDeDonneesEcriture = baseDeDonnees.getWritableDatabase();
+
+        baseDeDonneesEcriture.beginTransaction();
+        try {
+
+            ContentValues sortieEnCleValeur = new ContentValues();
+            sortieEnCleValeur.put("activite", sortie.getActivite());
+            sortieEnCleValeur.put("date", sortie.getDate());
+
+            baseDeDonneesEcriture.update("sortie",sortieEnCleValeur,"id = "+sortie.getId(), null);
+            baseDeDonneesEcriture.setTransactionSuccessful();
+        }
+        catch (Exception e) {
+            Log.d("SortieDAO","Erreur en tentant de modifier une sortie dans la base de données");
+        }
+        finally {
+            baseDeDonneesEcriture.endTransaction();
+        }
+
+    }
+
 }
