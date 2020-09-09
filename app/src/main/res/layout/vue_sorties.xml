@@ -5,7 +5,7 @@
     android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vue.VueSorties">
+    tools:context=".vue.VueListeSorties">
 
     <ListView
         android:id="@+id/vueSorties2020ListeActivites"

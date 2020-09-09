@@ -8,12 +8,12 @@ import android.widget.Button;
 
 import com.example.sorties2020.R;
 
-public class VueModifierActivite extends AppCompatActivity {
+public class VueModifierSortie extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vue_modifier_activite);
+        setContentView(R.layout.vue_modifier_sortie);
 
         Button vueModifierActiviteActionAnnuler= (Button)findViewById(R.id.vueModifierActiviteActionAnnuler);
         vueModifierActiviteActionAnnuler.setOnClickListener(

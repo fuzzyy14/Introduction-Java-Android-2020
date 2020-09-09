@@ -9,19 +9,20 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import com.example.sorties2020.R;
 import com.example.sorties2020.donnee.ActiviteDAO;
+import com.example.sorties2020.modele.Sortie;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class VueSorties extends AppCompatActivity {
+public class VueListeSorties extends AppCompatActivity {
 
     protected ListView vueSorties2020ListeActivites;
-    protected List<HashMap<String, String>> listeActivites;
+    //protected List<HashMap<String, String>> listeActivites;
+    protected List<Sortie> listeSorties;
     protected ActiviteDAO activiteDAO;
     protected Intent intentionNaviguerAjouterActivite;
     protected Intent intentionNaviguerModifierActivite;
@@ -47,10 +48,10 @@ public class VueSorties extends AppCompatActivity {
 
         vueSorties2020ListeActivites.setAdapter(adapteur);
         */
-        afficherListerActivites();
+        afficherListerSorties();
         Button vueSorties2020AjouterActivite = (Button)findViewById(R.id.vueSorties2020AjouterActivite);
 
-        intentionNaviguerAjouterActivite = new Intent(this, VueAjouterActivite.class);
+        intentionNaviguerAjouterActivite = new Intent(this, VueAjouterSortie.class);
 
         vueSorties2020AjouterActivite.setOnClickListener(
 
@@ -73,18 +74,18 @@ public class VueSorties extends AppCompatActivity {
 
         );
 
-        intentionNaviguerModifierActivite = new Intent(this, VueModifierActivite.class);
+        intentionNaviguerModifierActivite = new Intent(this, VueModifierSortie.class);
 
         vueSorties2020ListeActivites.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View vue, int positionDansAdapteur, long positionItem) {
-                        ListView vueListeActivites = (ListView)vue.getParent();
+                        ListView vueListeSorties = (ListView)vue.getParent();
 
                         @SuppressWarnings("unchecked")
-                        HashMap<String,String> activite =
+                        HashMap<String,String> sortie =
                                 (HashMap<String,String>)
-                                        vueListeActivites.getItemAtPosition((int)positionItem);
+                                        vueListeSorties.getItemAtPosition((int)positionItem);
                         /*Toast message = Toast.makeText(getApplicationContext(),
                                 "Position "+positionItem + " activite " + activite.get("activite"),
                                 Toast.LENGTH_SHORT);
@@ -102,7 +103,7 @@ public class VueSorties extends AppCompatActivity {
         switch (activity)
         {
             case ACTIVITY_AJOUTER_ACTIVITE:
-                afficherListerActivites();
+                afficherListerSorties();
                 break;
             //case ACTIVITY_MODIFIER_ACTIVITE:
                 //break;
@@ -111,12 +112,19 @@ public class VueSorties extends AppCompatActivity {
     }
 
 
-    public void afficherListerActivites(){
-        listeActivites = activiteDAO.listerActivites();
+    public void afficherListerSorties(){
+        listeSorties = activiteDAO.listerSorties();
 
+        List<HashMap<String,String>> listeSortiePourAfficher =
+                new ArrayList<HashMap<String, String>>();
+        for(Sortie sortie:listeSorties){
+            listeSortiePourAfficher.add(sortie.obtenirSortiePourAfficher());
+
+
+        }
         SimpleAdapter adapteur = new SimpleAdapter(
                 this,
-                listeActivites,
+                listeSortiePourAfficher,
                 android.R.layout.two_line_list_item,
                 new String[]{"activite","date"},
                 new int[]{android.R.id.text1, android.R.id.text2});

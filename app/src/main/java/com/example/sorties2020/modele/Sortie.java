@@ -37,12 +37,12 @@ public class Sortie {
         this.id = id;
     }
 
-    public HashMap<String,String> obtenirActivitePourAfficher(){
-        HashMap<String,String> activitePourAfficher = new HashMap<String,String>();
-        activitePourAfficher.put("activite", this.activite);
-        activitePourAfficher.put("date", this.date);
-        activitePourAfficher.put("id", "" + this.id);
-        return activitePourAfficher;
+    public HashMap<String,String> obtenirSortiePourAfficher(){
+        HashMap<String,String> sortiePourAfficher = new HashMap<String,String>();
+        sortiePourAfficher.put("activite", this.activite);
+        sortiePourAfficher.put("date", this.date);
+        sortiePourAfficher.put("id", "" + this.id);
+        return sortiePourAfficher;
     }
 
 }

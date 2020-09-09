@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".vue.VueModifierActivite"></activity>
-        <activity android:name=".vue.VueAjouterActivite" />
-        <activity android:name=".vue.VueSorties">
+        <activity android:name=".vue.VueAjouterSortie" />
+        <activity android:name=".vue.VueListeSorties">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

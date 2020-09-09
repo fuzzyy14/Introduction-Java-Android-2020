@@ -6,14 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.sorties2020.R;
 import com.example.sorties2020.donnee.ActiviteDAO;
 
 import java.util.HashMap;
 
-public class VueAjouterActivite extends AppCompatActivity {
+public class VueAjouterSortie extends AppCompatActivity {
 
     protected EditText vueAjouterActiviteChampActivite;
     protected EditText vueAjouterActiviteChampDescription;
@@ -24,7 +23,7 @@ public class VueAjouterActivite extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vue_ajouter_activite);
+        setContentView(R.layout.vue_ajouter_sortie);
 
         Button vueAjouterActiviteActionAnnuler= (Button)findViewById(R.id.vueAjouterActiviteActionAnnuler);
         vueAjouterActiviteActionAnnuler.setOnClickListener(
@@ -65,7 +64,7 @@ public class VueAjouterActivite extends AppCompatActivity {
                                 "Champ Titre :"+vueAjouterActiviteChampActivite.getText().toString(),
                                 Toast.LENGTH_SHORT);
                         message.show(); */
-                        enregistrerActivite();
+                        enregistrerSortie();
                         naviguerRetourSorties();
                     }
                 }
@@ -76,15 +75,15 @@ public class VueAjouterActivite extends AppCompatActivity {
 
 
     }
-    private void enregistrerActivite() {
+    private void enregistrerSortie() {
 
-        HashMap<String, String> activite;
+        HashMap<String, String> sortie;
 
-        activite = new HashMap<String, String>();
-        activite.put("activite", vueAjouterActiviteChampActivite.getText().toString() +" "+ vueAjouterActiviteChampDescription.getText().toString());
-        activite.put("date", vueAjouterActiviteChampDate.getText().toString() +" "+ vueAjouterActiviteChampHeure.getText().toString());
+        sortie = new HashMap<String, String>();
+        sortie.put("activite", vueAjouterActiviteChampActivite.getText().toString() +" "+ vueAjouterActiviteChampDescription.getText().toString());
+        sortie.put("date", vueAjouterActiviteChampDate.getText().toString() +" "+ vueAjouterActiviteChampHeure.getText().toString());
         activiteDAO = ActiviteDAO.getInstance();
-        activiteDAO.ajouterActivite(activite);
+        activiteDAO.ajouterSortie(sortie);
 
     }
 

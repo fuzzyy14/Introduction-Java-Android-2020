@@ -13,10 +13,10 @@ public class ActiviteDAO {
     private ActiviteDAO(){
         //listeActivites = new ArrayList<HashMap<String, String>>();
         listeSorties = new ArrayList<Sortie>();
-        preparerListeActivites();
+        preparerListeSorties();
     }
 
-    private void preparerListeActivites(){
+    private void preparerListeSorties(){
        /* HashMap<String, String> activite;
 
         activite = new HashMap<String, String>();
@@ -47,12 +47,12 @@ public class ActiviteDAO {
         return instance;
     }
 
-    public List<HashMap<String, String>> listerActivites(){
-        return listeActivites;
+    public List<Sortie> listerSorties(){
+        return listeSorties;
     }
 
-    public void ajouterActivite(HashMap<String, String> activite){
-        listeActivites.add(activite);
+    public void ajouterSortie(HashMap<String, String> activite){
+        //listeActivites.add(activite);
     }
 
 }
