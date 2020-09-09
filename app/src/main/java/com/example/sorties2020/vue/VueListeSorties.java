@@ -11,7 +11,8 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.example.sorties2020.R;
-import com.example.sorties2020.donnee.ActiviteDAO;
+import com.example.sorties2020.donnee.BaseDeDonnees;
+import com.example.sorties2020.donnee.SortieDAO;
 import com.example.sorties2020.modele.Sortie;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class VueListeSorties extends AppCompatActivity {
     protected ListView vueSorties2020ListeActivites;
     //protected List<HashMap<String, String>> listeActivites;
     protected List<Sortie> listeSorties;
-    protected ActiviteDAO activiteDAO;
+    protected SortieDAO sortieDAO;
     protected Intent intentionNaviguerAjouterActivite;
     protected Intent intentionNaviguerModifierActivite;
 
@@ -31,11 +32,15 @@ public class VueListeSorties extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vue_sorties);
         vueSorties2020ListeActivites = (ListView)findViewById(R.id.vueSorties2020ListeActivites);
 
-        activiteDAO = ActiviteDAO.getInstance();
+        //Important, ce get Instance doit se faire ici avant le SortieDAO.getInstance();
+        BaseDeDonnees.getInstance(getApplicationContext());
+
+        sortieDAO = SortieDAO.getInstance();
         /*
         listeActivites = activiteDAO.listerActivites();
 
@@ -113,7 +118,7 @@ public class VueListeSorties extends AppCompatActivity {
 
 
     public void afficherListerSorties(){
-        listeSorties = activiteDAO.listerSorties();
+        listeSorties = sortieDAO.listerSorties();
 
         List<HashMap<String,String>> listeSortiePourAfficher =
                 new ArrayList<HashMap<String, String>>();

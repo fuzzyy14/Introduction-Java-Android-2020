@@ -8,7 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.sorties2020.R;
-import com.example.sorties2020.donnee.ActiviteDAO;
+import com.example.sorties2020.donnee.SortieDAO;
+import com.example.sorties2020.modele.Sortie;
 
 import java.util.HashMap;
 
@@ -18,7 +19,7 @@ public class VueAjouterSortie extends AppCompatActivity {
     protected EditText vueAjouterActiviteChampDescription;
     protected EditText vueAjouterActiviteChampDate;
     protected EditText vueAjouterActiviteChampHeure;
-    protected ActiviteDAO activiteDAO;
+    protected SortieDAO sortieDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,14 +77,20 @@ public class VueAjouterSortie extends AppCompatActivity {
 
     }
     private void enregistrerSortie() {
-
+        /*
         HashMap<String, String> sortie;
 
         sortie = new HashMap<String, String>();
         sortie.put("activite", vueAjouterActiviteChampActivite.getText().toString() +" "+ vueAjouterActiviteChampDescription.getText().toString());
         sortie.put("date", vueAjouterActiviteChampDate.getText().toString() +" "+ vueAjouterActiviteChampHeure.getText().toString());
-        activiteDAO = ActiviteDAO.getInstance();
-        activiteDAO.ajouterSortie(sortie);
+        sortieDAO = SortieDAO.getInstance();
+        sortieDAO.ajouterSortie(sortie);*/
+
+        Sortie sortie = new Sortie(vueAjouterActiviteChampActivite.getText().toString() +" "+ vueAjouterActiviteChampDescription.getText().toString(),
+                vueAjouterActiviteChampDate.getText().toString() +" "+ vueAjouterActiviteChampHeure.getText().toString(),0);
+        sortieDAO = SortieDAO.getInstance();
+
+        sortieDAO.ajouterSortie(sortie);
 
     }
 
