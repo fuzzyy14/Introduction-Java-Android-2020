@@ -29,7 +29,7 @@ public class VueModifierSortie extends AppCompatActivity {
                 new View.OnClickListener()
                 {
                     public void onClick(View arg0) {
-                        // TODO : faire le code du bouton
+                        //
                         /*
                         Toast message = Toast.makeText(
                                 getApplicationContext(),

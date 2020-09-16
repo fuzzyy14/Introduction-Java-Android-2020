@@ -2,10 +2,14 @@ package com.example.sorties2020.vue;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.sorties2020.R;
 import com.example.sorties2020.donnee.SortieDAO;
@@ -20,6 +24,7 @@ public class VueAjouterSortie extends AppCompatActivity {
     protected EditText vueAjouterActiviteChampDate;
     protected EditText vueAjouterActiviteChampHeure;
     protected SortieDAO sortieDAO;
+    protected Intent intentionNaviguerAlarme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +64,6 @@ public class VueAjouterSortie extends AppCompatActivity {
                 new View.OnClickListener()
                 {
                     public void onClick(View arg0) {
-                        // TODO : faire le code du bouton
                         /*Toast message = Toast.makeText(
                                 getApplicationContext(),
                                 "Champ Titre :"+vueAjouterActiviteChampActivite.getText().toString(),
@@ -72,6 +76,27 @@ public class VueAjouterSortie extends AppCompatActivity {
 
 
         );
+        intentionNaviguerAlarme = new Intent(this, VueModifierSortie.class);
+        Button vueAjouterActiviteActionAlarme= (Button)findViewById(R.id.vueAjouterActiviteActionAlarme);
+        vueAjouterActiviteActionAlarme.setOnClickListener(
+
+                new View.OnClickListener()
+                {
+                    public void onClick(View arg0) {
+                        // TODO : faire le code du bouton
+                        Toast message = Toast.makeText(
+                                getApplicationContext(),
+                                "Appui sur le bouton ajouter une alarme",
+                                Toast.LENGTH_SHORT);
+                        message.show();
+
+                        startActivity(intentionNaviguerAlarme);
+                    }
+                }
+
+
+        );
+
 
 
 

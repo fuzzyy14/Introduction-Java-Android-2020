@@ -119,7 +119,7 @@ public class SortieDAO {
     }
 
     public void modifierSortie(Sortie sortie){
-        //TODO : A FAIRE :)
+        //
         SQLiteDatabase baseDeDonneesEcriture = baseDeDonnees.getWritableDatabase();
 
         baseDeDonneesEcriture.beginTransaction();
