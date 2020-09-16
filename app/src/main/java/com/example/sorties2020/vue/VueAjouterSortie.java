@@ -76,19 +76,18 @@ public class VueAjouterSortie extends AppCompatActivity {
 
 
         );
-        intentionNaviguerAlarme = new Intent(this, VueModifierSortie.class);
+        intentionNaviguerAlarme = new Intent(this, VueAjouterAlarme.class);
         Button vueAjouterActiviteActionAlarme= (Button)findViewById(R.id.vueAjouterActiviteActionAlarme);
         vueAjouterActiviteActionAlarme.setOnClickListener(
 
                 new View.OnClickListener()
                 {
                     public void onClick(View arg0) {
-                        // TODO : faire le code du bouton
-                        Toast message = Toast.makeText(
+                        /*Toast message = Toast.makeText(
                                 getApplicationContext(),
                                 "Appui sur le bouton ajouter une alarme",
                                 Toast.LENGTH_SHORT);
-                        message.show();
+                        message.show();*/
 
                         startActivity(intentionNaviguerAlarme);
                     }
