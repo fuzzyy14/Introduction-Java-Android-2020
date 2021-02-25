@@ -5,17 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.sorties2020.R;
-import com.example.sorties2020.donnee.SortieDAO;
-import com.example.sorties2020.modele.Sortie;
-
-import java.util.HashMap;
+import com.example.sorties2020.donnee.MemoDAO;
+import com.example.sorties2020.modele.Memo;
 
 public class VueAjouterSortie extends AppCompatActivity {
 
@@ -23,7 +18,7 @@ public class VueAjouterSortie extends AppCompatActivity {
     protected EditText vueAjouterActiviteChampDescription;
     protected EditText vueAjouterActiviteChampDate;
     protected EditText vueAjouterActiviteChampHeure;
-    protected SortieDAO sortieDAO;
+    protected MemoDAO memoDAO;
     protected Intent intentionNaviguerAlarme;
 
     @Override
@@ -102,19 +97,19 @@ public class VueAjouterSortie extends AppCompatActivity {
     }
     private void enregistrerSortie() {
         /*
-        HashMap<String, String> sortie;
+        HashMap<String, String> memo;
 
-        sortie = new HashMap<String, String>();
-        sortie.put("activite", vueAjouterActiviteChampActivite.getText().toString() +" "+ vueAjouterActiviteChampDescription.getText().toString());
-        sortie.put("date", vueAjouterActiviteChampDate.getText().toString() +" "+ vueAjouterActiviteChampHeure.getText().toString());
-        sortieDAO = SortieDAO.getInstance();
-        sortieDAO.ajouterSortie(sortie);*/
+        memo = new HashMap<String, String>();
+        memo.put("activite", vueAjouterActiviteChampActivite.getText().toString() +" "+ vueAjouterActiviteChampDescription.getText().toString());
+        memo.put("date", vueAjouterActiviteChampDate.getText().toString() +" "+ vueAjouterActiviteChampHeure.getText().toString());
+        memoDAO = MemoDAO.getInstance();
+        memoDAO.ajouterSortie(memo);*/
 
-        Sortie sortie = new Sortie(vueAjouterActiviteChampActivite.getText().toString() +" "+ vueAjouterActiviteChampDescription.getText().toString(),
+        Memo memo = new Memo(vueAjouterActiviteChampActivite.getText().toString() +" "+ vueAjouterActiviteChampDescription.getText().toString(),
                 vueAjouterActiviteChampDate.getText().toString() +" "+ vueAjouterActiviteChampHeure.getText().toString(),0);
-        sortieDAO = SortieDAO.getInstance();
+        memoDAO = MemoDAO.getInstance();
 
-        sortieDAO.ajouterSortie(sortie);
+        memoDAO.ajouterMemo(memo);
 
     }
 

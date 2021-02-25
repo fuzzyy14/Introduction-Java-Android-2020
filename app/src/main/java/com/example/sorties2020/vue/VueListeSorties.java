@@ -12,8 +12,8 @@ import android.widget.SimpleAdapter;
 
 import com.example.sorties2020.R;
 import com.example.sorties2020.donnee.BaseDeDonnees;
-import com.example.sorties2020.donnee.SortieDAO;
-import com.example.sorties2020.modele.Sortie;
+import com.example.sorties2020.donnee.MemoDAO;
+import com.example.sorties2020.modele.Memo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,8 +23,8 @@ public class VueListeSorties extends AppCompatActivity {
 
     protected ListView vueSorties2020ListeActivites;
     //protected List<HashMap<String, String>> listeActivites;
-    protected List<Sortie> listeSorties;
-    protected SortieDAO sortieDAO;
+    protected List<Memo> listeSorties;
+    protected MemoDAO memoDAO;
     protected Intent intentionNaviguerAjouterActivite;
     protected Intent intentionNaviguerModifierActivite;
 
@@ -38,10 +38,10 @@ public class VueListeSorties extends AppCompatActivity {
         setContentView(R.layout.vue_sorties);
         vueSorties2020ListeActivites = (ListView)findViewById(R.id.vueSorties2020ListeActivites);
 
-        //Important, ce get Instance doit se faire ici avant le SortieDAO.getInstance();
+        //Important, ce get Instance doit se faire ici avant le MemoDAO.getInstance();
         BaseDeDonnees.getInstance(getApplicationContext());
 
-        sortieDAO = SortieDAO.getInstance();
+        memoDAO = MemoDAO.getInstance();
         /*
         listeActivites = activiteDAO.listerActivites();
 
@@ -122,12 +122,12 @@ public class VueListeSorties extends AppCompatActivity {
 
 
     public void afficherListerSorties(){
-        listeSorties = sortieDAO.listerSorties();
+        listeSorties = memoDAO.listerMemos();
 
         List<HashMap<String,String>> listeSortiePourAfficher =
                 new ArrayList<HashMap<String, String>>();
-        for(Sortie sortie:listeSorties){
-            listeSortiePourAfficher.add(sortie.obtenirSortiePourAfficher());
+        for(Memo memo :listeSorties){
+            listeSortiePourAfficher.add(memo.obtenirSortiePourAfficher());
 
 
         }

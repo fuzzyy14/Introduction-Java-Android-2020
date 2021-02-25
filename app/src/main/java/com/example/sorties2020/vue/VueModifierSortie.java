@@ -8,15 +8,15 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.sorties2020.R;
-import com.example.sorties2020.donnee.SortieDAO;
-import com.example.sorties2020.modele.Sortie;
+import com.example.sorties2020.donnee.MemoDAO;
+import com.example.sorties2020.modele.Memo;
 
 public class VueModifierSortie extends AppCompatActivity {
 
     protected EditText vueModifierSortieChampActivite;
     protected EditText vueModifierSortieChampDate;
-    protected SortieDAO sortieDAO;
-    protected Sortie sortie;
+    protected MemoDAO memoDAO;
+    protected Memo memo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,15 +47,15 @@ public class VueModifierSortie extends AppCompatActivity {
         Bundle parametres = this.getIntent().getExtras();
         String idParametre = (String) parametres.get("id");
         int id = Integer.parseInt(idParametre);
-        sortieDAO = SortieDAO.getInstance();
-        sortie = sortieDAO.chercherSortieParId(id);
+        memoDAO = MemoDAO.getInstance();
+        memo = memoDAO.chercherMemoParId(id);
 
         vueModifierSortieChampActivite = (EditText)findViewById(R.id.vueModifierSortieChampActivite);
         vueModifierSortieChampDate = (EditText)findViewById(R.id.vueModifierSortieChampDate);
 
 
-        vueModifierSortieChampActivite.setText(sortie.getActivite());
-        vueModifierSortieChampDate.setText(sortie.getDate());
+        vueModifierSortieChampActivite.setText(memo.getActivite());
+        vueModifierSortieChampDate.setText(memo.getDate());
 
         Button vueModifierSortieActionModifier = (Button)findViewById(R.id.vueModifierSortieActionModifier);
 
@@ -77,10 +77,10 @@ public class VueModifierSortie extends AppCompatActivity {
 
     private void enregistrerSortie() {
 
-        sortie.setActivite(vueModifierSortieChampActivite.getText().toString());
-        sortie.setDate(vueModifierSortieChampDate.getText().toString());
+        memo.setActivite(vueModifierSortieChampActivite.getText().toString());
+        memo.setDate(vueModifierSortieChampDate.getText().toString());
 
-        sortieDAO.modifierSortie(sortie);
+        memoDAO.modifierMemo(memo);
 
     }
 

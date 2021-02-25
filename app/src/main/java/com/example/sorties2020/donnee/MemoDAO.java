@@ -5,28 +5,27 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.example.sorties2020.modele.Sortie;
+import com.example.sorties2020.modele.Memo;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-public class SortieDAO {
-    private static SortieDAO instance = null;
+public class MemoDAO {
+    private static MemoDAO instance = null;
     //private  List<HashMap<String, String>> listeActivites;
-    private List<Sortie> listeSorties;
+    private List<Memo> listeMemos;
 
     private BaseDeDonnees baseDeDonnees;
 
-    private SortieDAO() {
+    private MemoDAO() {
         this.baseDeDonnees = BaseDeDonnees.getInstance();
 
         //listeActivites = new ArrayList<HashMap<String, String>>();
-        listeSorties = new ArrayList<Sortie>();
-        //preparerListeSorties();
+        listeMemos = new ArrayList<Memo>();
+        //preparerListeMemos();
     }
 
-    /*private void preparerListeSorties() {
+    /*private void preparerListeMemos() {
         HashMap<String, String> activite;
 
         activite = new HashMap<String, String>();
@@ -44,28 +43,28 @@ public class SortieDAO {
         activite.put("date","12 Février "+"de 14h à 17h30");
         listeActivites.add(activite);
 
-        listeSorties.add(new Sortie("Scéance de cinéma avec les amis " + "film Là Haut", "12 Juillet " + "15h20", 0));
-        listeSorties.add(new Sortie("Parc Festiland " + "avec mes amis du lycée", "24 Mars " + "de 13h à 19h", 1));
-        listeSorties.add(new Sortie("Parc aquatique H2O " + "avec ma tante, ma cousine, ma mère, mon frère et ma soeur", "12 Février " + "de 14h à 17h30", 2));
+        listeMemos.add(new Memo("Scéance de cinéma avec les amis " + "film Là Haut", "12 Juillet " + "15h20", 0));
+        listeMemos.add(new Memo("Parc Festiland " + "avec mes amis du lycée", "24 Mars " + "de 13h à 19h", 1));
+        listeMemos.add(new Memo("Parc aquatique H2O " + "avec ma tante, ma cousine, ma mère, mon frère et ma soeur", "12 Février " + "de 14h à 17h30", 2));
     }*/
 
-    public static SortieDAO getInstance() { // fonction pour initialiser une instance ActiviteDAO et ainsi preparer la liste
+    public static MemoDAO getInstance() { // fonction pour initialiser une instance ActiviteDAO et ainsi preparer la liste
         if (null == instance) {
-            instance = new SortieDAO();
+            instance = new MemoDAO();
         }
 
         return instance;
     }
 
-    /*public List<Sortie> listerSorties(){
-        return listeSorties;
+    /*public List<Memo> listerMemos(){
+        return listeMemos;
     }*/
 
-    public List<Sortie> listerSorties() {
-        String LISTER_SORTIE = "SELECT * FROM sortie";
-        Cursor curseur = baseDeDonnees.getReadableDatabase().rawQuery(LISTER_SORTIE, null);
-        this.listeSorties.clear();
-        Sortie sortie;
+    public List<Memo> listerMemos() {
+        String LISTER_MEMO = "SELECT * FROM table_memo";
+        Cursor curseur = baseDeDonnees.getReadableDatabase().rawQuery(LISTER_MEMO, null);
+        this.listeMemos.clear();
+        Memo memo;
 
         int indexId = curseur.getColumnIndex("id");
         int indexActivite = curseur.getColumnIndex("activite");
@@ -75,19 +74,19 @@ public class SortieDAO {
             int id = curseur.getInt(indexId);
             String activite = curseur.getString(indexActivite);
             String date = curseur.getString(indexDate);
-            sortie = new Sortie(activite, date, id);
-            this.listeSorties.add(sortie);
+            memo = new Memo(activite, date, id);
+            this.listeMemos.add(memo);
         }
 
-        return listeSorties;
+        return listeMemos;
     }
 
     /*
-    public void ajouterSortie(HashMap<String, String> activite){
-        //listeActivites.add(activite);
+    public void ajouterMemo(HashMap<String, String> activite){
+        //listeMemos.add(activite);
     }*/
 
-    public void ajouterSortie(Sortie sortie){
+    public void ajouterMemo(Memo memo){
 
         SQLiteDatabase baseDeDonneesEcriture = baseDeDonnees.getWritableDatabase();
 
@@ -95,45 +94,45 @@ public class SortieDAO {
         try {
 
             ContentValues sortieEnCleValeur = new ContentValues();
-            sortieEnCleValeur.put("activite", sortie.getActivite());
-            sortieEnCleValeur.put("date", sortie.getDate());
+            sortieEnCleValeur.put("activite", memo.getActivite());
+            sortieEnCleValeur.put("date", memo.getDate());
 
-            baseDeDonneesEcriture.insertOrThrow("sortie",null, sortieEnCleValeur);
+            baseDeDonneesEcriture.insertOrThrow("table_memo",null, sortieEnCleValeur);
             baseDeDonneesEcriture.setTransactionSuccessful();
         }
         catch (Exception e) {
-            Log.d("SortieDAO","Erreur en tentant d'ajouter une sortie dans la base de données");
+            Log.d("MemoDAO","Erreur en tentant d'ajouter un memo dans la base de données");
         }
         finally {
             baseDeDonneesEcriture.endTransaction();
         }
     }
 
-    public Sortie chercherSortieParId(int id){
-        listerSorties();
-        for(Sortie sortieRecherche : this.listeSorties) //boucle pour chercher la sortie correspondant à l'ID
+    public Memo chercherMemoParId(int id){
+        listerMemos();
+        for(Memo memoRecherche : this.listeMemos) //boucle pour chercher le memo correspondant à l'ID
         {
-            if(sortieRecherche.getId() == id) return sortieRecherche;
+            if(memoRecherche.getId() == id) return memoRecherche;
         }
         return null; //si on a rien trouvé, on retourne null
     }
 
-    public void modifierSortie(Sortie sortie){
+    public void modifierMemo(Memo memo){
         //
         SQLiteDatabase baseDeDonneesEcriture = baseDeDonnees.getWritableDatabase();
 
         baseDeDonneesEcriture.beginTransaction();
         try {
 
-            ContentValues sortieEnCleValeur = new ContentValues();
-            sortieEnCleValeur.put("activite", sortie.getActivite());
-            sortieEnCleValeur.put("date", sortie.getDate());
+            ContentValues memoEnCleValeur = new ContentValues();
+            memoEnCleValeur.put("activite", memo.getActivite());
+            memoEnCleValeur.put("date", memo.getDate());
 
-            baseDeDonneesEcriture.update("sortie",sortieEnCleValeur,"id = "+sortie.getId(), null);
+            baseDeDonneesEcriture.update("table_memo",memoEnCleValeur,"id = "+ memo.getId(), null);
             baseDeDonneesEcriture.setTransactionSuccessful();
         }
         catch (Exception e) {
-            Log.d("SortieDAO","Erreur en tentant de modifier une sortie dans la base de données");
+            Log.d("MemoDAO","Erreur en tentant de modifier une memo dans la base de données");
         }
         finally {
             baseDeDonneesEcriture.endTransaction();

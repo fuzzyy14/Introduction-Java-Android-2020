@@ -2,12 +2,12 @@ package com.example.sorties2020.modele;
 
 import java.util.HashMap;
 
-public class Sortie {
+public class Memo {
     protected String activite;
     protected String date;
     protected int id;
 
-    public Sortie(String activite, String date, int id) {
+    public Memo(String activite, String date, int id) {
         this.activite = activite;
         this.date = date;
         this.id = id;
