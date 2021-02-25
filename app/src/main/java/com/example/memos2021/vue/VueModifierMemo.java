@@ -13,15 +13,15 @@ import com.example.memos2021.modele.Memo;
 
 public class VueModifierMemo extends AppCompatActivity {
 
-    protected EditText vueModifierSortieChampActivite;
-    protected EditText vueModifierSortieChampDate;
+    protected EditText vueModifierMemoChampActivite;
+    protected EditText vueModifierMemoChampDate;
     protected MemoDAO memoDAO;
     protected Memo memo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vue_modifier_sortie);
+        setContentView(R.layout.vue_modifier_memo);
 
         Button vueModifierActiviteActionAnnuler= (Button)findViewById(R.id.vueModifierActiviteActionAnnuler);
         vueModifierActiviteActionAnnuler.setOnClickListener(
@@ -37,7 +37,7 @@ public class VueModifierMemo extends AppCompatActivity {
                                 Toast.LENGTH_SHORT);
                         message.show();
                         */
-                        naviguerRetourSorties();
+                        naviguerRetourMemos();
                     }
                 }
 
@@ -50,23 +50,23 @@ public class VueModifierMemo extends AppCompatActivity {
         memoDAO = MemoDAO.getInstance();
         memo = memoDAO.chercherMemoParId(id);
 
-        vueModifierSortieChampActivite = (EditText)findViewById(R.id.vueModifierSortieChampActivite);
-        vueModifierSortieChampDate = (EditText)findViewById(R.id.vueModifierSortieChampDate);
+        vueModifierMemoChampActivite = (EditText)findViewById(R.id.vueModifierMemoChampActivite);
+        vueModifierMemoChampDate = (EditText)findViewById(R.id.vueModifierMemoChampDate);
 
 
-        vueModifierSortieChampActivite.setText(memo.getActivite());
-        vueModifierSortieChampDate.setText(memo.getDate());
+        vueModifierMemoChampActivite.setText(memo.getActivite());
+        vueModifierMemoChampDate.setText(memo.getDate());
 
-        Button vueModifierSortieActionModifier = (Button)findViewById(R.id.vueModifierSortieActionModifier);
+        Button vueModifierMemoActionModifier = (Button)findViewById(R.id.vueModifierMemoActionModifier);
 
-        vueModifierSortieActionModifier.setOnClickListener(
+        vueModifierMemoActionModifier.setOnClickListener(
 
                 new View.OnClickListener()
                 {
                     public void onClick(View arg0){
                         //TODO : coder !
-                        enregistrerSortie();
-                        naviguerRetourSorties();
+                        enregistrerMemo();
+                        naviguerRetourMemos();
 
                     }
 
@@ -75,16 +75,16 @@ public class VueModifierMemo extends AppCompatActivity {
 
     }
 
-    private void enregistrerSortie() {
+    private void enregistrerMemo() {
 
-        memo.setActivite(vueModifierSortieChampActivite.getText().toString());
-        memo.setDate(vueModifierSortieChampDate.getText().toString());
+        memo.setActivite(vueModifierMemoChampActivite.getText().toString());
+        memo.setDate(vueModifierMemoChampDate.getText().toString());
 
         memoDAO.modifierMemo(memo);
 
     }
 
-    public void naviguerRetourSorties()
+    public void naviguerRetourMemos()
     {
         this.finish();
     }
