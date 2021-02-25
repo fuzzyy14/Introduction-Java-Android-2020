@@ -37,12 +37,12 @@ public class Memo {
         this.id = id;
     }
 
-    public HashMap<String,String> obtenirSortiePourAfficher(){
-        HashMap<String,String> sortiePourAfficher = new HashMap<String,String>();
-        sortiePourAfficher.put("activite", this.activite);
-        sortiePourAfficher.put("date", this.date);
-        sortiePourAfficher.put("id", "" + this.id);
-        return sortiePourAfficher;
+    public HashMap<String,String> obtenirMemoPourAfficher(){
+        HashMap<String,String> memoPourAfficher = new HashMap<String,String>();
+        memoPourAfficher.put("activite", this.activite);
+        memoPourAfficher.put("date", this.date);
+        memoPourAfficher.put("id", "" + this.id);
+        return memoPourAfficher;
     }
 
 }

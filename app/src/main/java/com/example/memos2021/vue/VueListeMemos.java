@@ -35,7 +35,7 @@ public class VueListeMemos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vue_sorties);
+        setContentView(R.layout.vue_memos);
         vueSorties2020ListeActivites = (ListView)findViewById(R.id.vueSorties2020ListeActivites);
 
         //Important, ce get Instance doit se faire ici avant le MemoDAO.getInstance();
@@ -127,7 +127,7 @@ public class VueListeMemos extends AppCompatActivity {
         List<HashMap<String,String>> listeSortiePourAfficher =
                 new ArrayList<HashMap<String, String>>();
         for(Memo memo :listeSorties){
-            listeSortiePourAfficher.add(memo.obtenirSortiePourAfficher());
+            listeSortiePourAfficher.add(memo.obtenirMemoPourAfficher());
 
 
         }
