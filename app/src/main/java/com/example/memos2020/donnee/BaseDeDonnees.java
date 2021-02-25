@@ -1,4 +1,4 @@
-package com.example.sorties2020.donnee;
+package com.example.memos2020.donnee;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

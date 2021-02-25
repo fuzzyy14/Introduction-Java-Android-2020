@@ -1,4 +1,4 @@
-package com.example.sorties2020;
+package com.example.memos2020;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.example.sorties2020.modele;
+package com.example.memos2020.modele;
 
 import java.util.HashMap;
 

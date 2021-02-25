@@ -1,4 +1,4 @@
-package com.example.sorties2020.vue;
+package com.example.memos2020.vue;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,16 +10,16 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-import com.example.sorties2020.R;
-import com.example.sorties2020.donnee.BaseDeDonnees;
-import com.example.sorties2020.donnee.MemoDAO;
-import com.example.sorties2020.modele.Memo;
+import com.example.memos2020.R;
+import com.example.memos2020.donnee.BaseDeDonnees;
+import com.example.memos2020.donnee.MemoDAO;
+import com.example.memos2020.modele.Memo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class VueListeSorties extends AppCompatActivity {
+public class VueListeMemos extends AppCompatActivity {
 
     protected ListView vueSorties2020ListeActivites;
     //protected List<HashMap<String, String>> listeActivites;
@@ -57,7 +57,7 @@ public class VueListeSorties extends AppCompatActivity {
         afficherListerSorties();
         Button vueSorties2020AjouterActivite = (Button)findViewById(R.id.vueSorties2020AjouterActivite);
 
-        intentionNaviguerAjouterActivite = new Intent(this, VueAjouterSortie.class);
+        intentionNaviguerAjouterActivite = new Intent(this, VueAjouterMemo.class);
 
         vueSorties2020AjouterActivite.setOnClickListener(
 
@@ -80,7 +80,7 @@ public class VueListeSorties extends AppCompatActivity {
 
         );
 
-        intentionNaviguerModifierActivite = new Intent(this, VueModifierSortie.class);
+        intentionNaviguerModifierActivite = new Intent(this, VueModifierMemo.class);
 
         vueSorties2020ListeActivites.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {

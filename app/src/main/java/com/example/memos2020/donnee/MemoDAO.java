@@ -1,11 +1,11 @@
-package com.example.sorties2020.donnee;
+package com.example.memos2020.donnee;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.example.sorties2020.modele.Memo;
+import com.example.memos2020.modele.Memo;
 
 import java.util.ArrayList;
 import java.util.List;

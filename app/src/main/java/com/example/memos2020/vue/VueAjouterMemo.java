@@ -1,4 +1,4 @@
-package com.example.sorties2020.vue;
+package com.example.memos2020.vue;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,11 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.sorties2020.R;
-import com.example.sorties2020.donnee.MemoDAO;
-import com.example.sorties2020.modele.Memo;
+import com.example.memos2020.R;
+import com.example.memos2020.donnee.MemoDAO;
+import com.example.memos2020.modele.Memo;
 
-public class VueAjouterSortie extends AppCompatActivity {
+public class VueAjouterMemo extends AppCompatActivity {
 
     protected EditText vueAjouterActiviteChampActivite;
     protected EditText vueAjouterActiviteChampDescription;
