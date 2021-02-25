@@ -24,7 +24,7 @@ public class VueAjouterMemo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vue_ajouter_sortie);
+        setContentView(R.layout.vue_ajouter_memo);
 
         Button vueAjouterActiviteActionAnnuler= (Button)findViewById(R.id.vueAjouterActiviteActionAnnuler);
         vueAjouterActiviteActionAnnuler.setOnClickListener(
@@ -40,7 +40,7 @@ public class VueAjouterMemo extends AppCompatActivity {
                                 Toast.LENGTH_SHORT);
                         message.show();
                         */
-                        naviguerRetourSorties();
+                        naviguerRetourMemos();
                     }
                 }
 
@@ -64,8 +64,8 @@ public class VueAjouterMemo extends AppCompatActivity {
                                 "Champ Titre :"+vueAjouterActiviteChampActivite.getText().toString(),
                                 Toast.LENGTH_SHORT);
                         message.show(); */
-                        enregistrerSortie();
-                        naviguerRetourSorties();
+                        enregistrerMemo();
+                        naviguerRetourMemos();
                     }
                 }
 
@@ -95,7 +95,7 @@ public class VueAjouterMemo extends AppCompatActivity {
 
 
     }
-    private void enregistrerSortie() {
+    private void enregistrerMemo() {
         /*
         HashMap<String, String> memo;
 
@@ -103,7 +103,7 @@ public class VueAjouterMemo extends AppCompatActivity {
         memo.put("activite", vueAjouterActiviteChampActivite.getText().toString() +" "+ vueAjouterActiviteChampDescription.getText().toString());
         memo.put("date", vueAjouterActiviteChampDate.getText().toString() +" "+ vueAjouterActiviteChampHeure.getText().toString());
         memoDAO = MemoDAO.getInstance();
-        memoDAO.ajouterSortie(memo);*/
+        memoDAO.ajouterMemo(memo);*/
 
         Memo memo = new Memo(vueAjouterActiviteChampActivite.getText().toString() +" "+ vueAjouterActiviteChampDescription.getText().toString(),
                 vueAjouterActiviteChampDate.getText().toString() +" "+ vueAjouterActiviteChampHeure.getText().toString(),0);
@@ -113,7 +113,7 @@ public class VueAjouterMemo extends AppCompatActivity {
 
     }
 
-    public void naviguerRetourSorties()
+    public void naviguerRetourMemos()
     {
         this.finish();
     }

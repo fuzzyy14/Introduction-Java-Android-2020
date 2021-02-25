@@ -23,7 +23,7 @@ public class BaseDeDonnees extends SQLiteOpenHelper {
     }
 
     public BaseDeDonnees(Context contexte) {
-        super(contexte, "listeSorties", null, 1);
+        super(contexte, "listeMemos", null, 1);
     }
 
     @Override
