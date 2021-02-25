@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.memos2020">
+    package="com.example.memos2021">
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Memos2021"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.memos2020.vue.VueAjouterAlarme"></activity>
-        <activity android:name="com.example.memos2020.vue.VueModifierMemo" />
-        <activity android:name="com.example.memos2020.vue.VueAjouterMemo" />
-        <activity android:name="com.example.memos2020.vue.VueListeMemos">
+        <activity android:name="com.example.memos2021.vue.VueAjouterAlarme"></activity>
+        <activity android:name="com.example.memos2021.vue.VueModifierMemo" />
+        <activity android:name="com.example.memos2021.vue.VueAjouterMemo" />
+        <activity android:name="com.example.memos2021.vue.VueListeMemos">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

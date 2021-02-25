@@ -1,4 +1,4 @@
-package com.example.memos2020.vue;
+package com.example.memos2021.vue;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,10 +10,10 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-import com.example.memos2020.R;
-import com.example.memos2020.donnee.BaseDeDonnees;
-import com.example.memos2020.donnee.MemoDAO;
-import com.example.memos2020.modele.Memo;
+import com.example.memos2021.R;
+import com.example.memos2021.donnee.BaseDeDonnees;
+import com.example.memos2021.donnee.MemoDAO;
+import com.example.memos2021.modele.Memo;
 
 import java.util.ArrayList;
 import java.util.HashMap;

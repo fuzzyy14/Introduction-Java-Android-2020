@@ -1,4 +1,4 @@
-package com.example.memos2020.vue;
+package com.example.memos2021.vue;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TimePicker;
 
-import com.example.memos2020.R;
+import com.example.memos2021.R;
 
 import java.util.Calendar;
 
